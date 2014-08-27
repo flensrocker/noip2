@@ -1,3 +1,9 @@
+no-ip (2.1.9-3~lars0) precise; urgency=medium
+
+  * add upstart job
+
+ -- Lars Hanisch <dvb@flensrocker.de>  Wed, 27 Aug 2014 13:46:45 +0200
+
 no-ip (2.1.9-3) unstable; urgency=low
 
   * Use dh_installppp (not dh_installifupdown) for ip-up script.

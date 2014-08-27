@@ -1,0 +1,48 @@
+
+description "No-IP.com dynamic address update"
+author "Lars Hanisch <dvb@flensrocker.de>"
+
+env NAME=noip2
+env DAEMON=/usr/bin/noip2
+env DEFAULT=/etc/default/noip2
+env CONFFILE=/var/lib/noip2/noip2.conf
+env DAEMONOPTS=
+
+start on static-network-up or stopped noip2 RESULT=failed EXIT_STATUS!=[02]
+stop on runlevel [016]
+
+respawn
+expect fork
+normal exit 0
+kill timeout 60
+
+pre-start script
+  test -x $DAEMON || exit 2
+  [ -r $DEFAULT ] && . $DEFAULT
+  if [ "$RUN_INIT" != "yes" ]
+  then
+    logger -t $NAME "$NAME: Not starting $DESCRIPTION, disabled in $DEFAULT."
+    exit 2
+  fi
+
+  if [ ! -w $CONFFILE ]; then
+    logger -t $NAME "Creating a read-write copy of the $NAME configuration"
+    NEWCONFFILE=/dev/shm/noip2-readwrite.conf
+    cp $CONFFILE $NEWCONFFILE && CONFFILE=$NEWCONFFILE
+    ret=$?
+    DAEMONOPTS="${DAEMONOPTS:+$DAEMONOPTS }-c $CONFFILE"
+    logger -t $NAME "$ret $CONFFILE"
+  fi
+
+  export $DAEMONOPTS
+end script
+
+exec $DAEMON $DAEMONOPTS
+
+pre-stop script
+  for i in `$DAEMON -S 2>&1 | grep Process | awk '{print $2}' | tr -d ','`
+  do
+    $DAEMON -K $i
+  done
+end script
+
