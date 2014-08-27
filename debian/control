@@ -1,0 +1,25 @@
+Source: no-ip
+Section: net
+Priority: optional
+Maintainer: Otavio Salvador <otavio@debian.org>
+Uploaders: Andres Mejia <mcitadel@gmail.com>, Avi Rozen <avi.rozen@gmail.com>
+Build-Depends: debhelper (>= 5), po-debconf, quilt
+Standards-Version: 3.8.1
+Vcs-Git: git://git.debian.org/git/collab-maint/no-ip.git
+Vcs-Browser: http://git.debian.org/?p=collab-maint/no-ip.git
+Homepage: http://www.no-ip.com
+DM-Upload-Allowed: yes
+
+Package: noip2
+Replaces: no-ip
+Provides: no-ip
+Conflicts: no-ip
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Description: client for dynamic DNS service
+ This package provides the No-IP.com Dynamic DNS update client.
+ .
+ When configured correctly, the client will check the local IP address at a
+ given time interval. If it
+ has changed, the client will notify No-IP.com DNS servers and update the
+ IP address for your No-IP/No-IP+ host name.

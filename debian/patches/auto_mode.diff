@@ -1,0 +1,45 @@
+Add an automode feature
+==========================================================================
+--- a/noip2.c
++++ b/noip2.c
+@@ -362,6 +362,7 @@
+ int	needs_conf 		=	0;
+ int	firewallbox		=	0;
+ int	forceyes		=	0;
++int	auto_mode		=	0;
+ int	update_cycle		=	0;
+ int	show_config		=	0;
+ int	shmid			=	0;
+@@ -762,6 +763,8 @@
+ 		exit(1);
+ 	    }
+ 	    prompt_for_executable = 0;		// don't prompt in auto mode
++	    forceyes++;
++	    auto_mode++;
+ 	}
+ 	if (debug_toggle && (have_args != ARGD)){
+ 	    Msg("Error! -D option can't be used with any other options.");
+@@ -2462,6 +2465,11 @@
+ 		break;
+ 	    default:		// firewall machine
+ 		Msg(CMSG20);
++		if (auto_mode) {
++		    strcpy(d, (char *)devs[0]);
++		    Msg("Auto selected %s", devs[0]);
++		    break;
++		}
+ 		do {
+ 		    Msg(CMSG21);
+ 		    Msg(CMSG22);
+@@ -2588,7 +2596,10 @@
+ 	if (nat && (update_cycle == 0)) {
+ 	    do {
+ 		fprintf(stderr, CMSG38, DEFAULT_NAT_INTERVAL);
+-		fgets(answer, LINELEN, stdin);
++		if (auto_mode)
++		    strcpy(answer, "\n");
++		else
++		    fgets(answer, LINELEN, stdin);
+ 		if (*answer == '\n')
+ 		    update_cycle = DEFAULT_NAT_INTERVAL;
+ 		else

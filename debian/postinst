@@ -1,0 +1,57 @@
+#!/bin/sh -e
+
+# include debconf library
+. /usr/share/debconf/confmodule
+
+# check if we use the right debconf version
+db_version 2.0 || { echo "need DebConf 2.0 or later"; exit 1; }
+
+setup_configuration() {
+	# Varible here is used in case creating the configuration file failed.
+	redosetup="false"
+
+	# Get values from debconf database
+	db_get noip2/username && username="$RET"
+	db_get noip2/password && password="$RET"
+	db_get noip2/updating && updating="$RET"
+	
+	opts=""
+
+	matchlist=""
+	db_get noip2/matchlist && \
+		matchlist=$(echo "$RET" | sed -r -e s/[,\ ]+/,/g -e s/^,//g -e s/,$//g)
+	db_set noip2/matchlist "$matchlist"
+	if [ ! "$matchlist" = "" ]; then
+		opts=$opts" -L "$matchlist
+	fi
+
+	netdevice=""
+	db_get noip2/netdevice && netdevice=$(echo "$RET" | sed -r -e s/\ +//g)
+	db_set noip2/netdevice "$netdevice"
+	if [ ! "$netdevice" = "" ]; then
+		opts=$opts" -I "$netdevice
+	fi
+
+	db_get noip2/forcenatoff && forcenatoff="$RET"
+	if [ $forcenatoff = "true" ]; then
+		opts=$opts" -F"
+	fi
+
+	# Generate the configuration data file using noip2
+	noip2 -C -u "${username}" -p "${password}" -U $updating $opts
+}
+
+case "$1" in
+	configure)
+		setup_configuration
+		db_stop
+		;;
+	abort-upgrade|abort-remove|abort-deconfigure)
+		;;
+	*)
+		echo "postinst called with unknown argument \'$1'" >&2
+		exit 0
+		;;
+esac
+
+#DEBHELPER#

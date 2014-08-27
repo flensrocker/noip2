@@ -1,0 +1,131 @@
+# translation of ru.po to Russian
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+#
+# Yuri Kozlov <kozlov.y@gmail.com>, 2007.
+msgid ""
+msgstr ""
+"Project-Id-Version: 2.1.7-4\n"
+"Report-Msgid-Bugs-To: Source: no-ip@packages.debian.org\n"
+"POT-Creation-Date: 2007-11-25 12:57+0000\n"
+"PO-Revision-Date: 2007-11-28 21:10+0300\n"
+"Last-Translator: Yuri Kozlov <kozlov.y@gmail.com>\n"
+"Language-Team: Russian <debian-l10n-russian@lists.debian.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: KBabel 1.11.4\n"
+"Plural-Forms:  nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%"
+"10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+
+#. Type: string
+#. Description
+#: ../templates:2001
+msgid "No-IP.com user name:"
+msgstr "Имя пользователя на No-IP.com:"
+
+#. Type: string
+#. Description
+#: ../templates:2001
+msgid ""
+"Please enter your No-IP.com account user name (usually your email address)."
+msgstr ""
+"Введите имя вашей учётной записи на No-IP.com (обычно, это ваш адрес "
+"электронной почты)."
+
+#. Type: password
+#. Description
+#: ../templates:3001
+msgid "No-IP.com password:"
+msgstr "Пароль на No-IP.com:"
+
+#. Type: password
+#. Description
+#: ../templates:3001
+msgid "Please enter your No-IP.com account password."
+msgstr "Введите пароль для вашей учётной записи на No-IP.com."
+
+#. Type: string
+#. Description
+#: ../templates:4001
+msgid "Update interval (in minutes):"
+msgstr "Интервал обновления (в минутах):"
+
+#. Type: string
+#. Description
+#: ../templates:4001
+msgid ""
+"Please enter the updating frequency (in minutes) the noip2 client should use "
+"to refresh the record of your IP address."
+msgstr ""
+"Укажите частоту обновления (в минутах), с которой клиент noip2 должен "
+"обновлять запись об IP-адресе."
+
+#. Type: string
+#. Description
+#: ../templates:5001
+msgid "List of hosts or groups:"
+msgstr "Список хостов или групп:"
+
+#. Type: string
+#. Description
+#: ../templates:5001
+msgid ""
+"Please specify a comma- or space-separated list of hosts or groups to update."
+msgstr "Введите через запятую или пробел список обновляемых хостов или групп."
+
+#. Type: string
+#. Description
+#: ../templates:5001
+msgid ""
+"If you leave this field empty, all hosts and groups listed in your No-IP.com "
+"account will be updated."
+msgstr ""
+"Если оставить это поле пустым, все хосты и группы вашей учётной записи на No-"
+"IP.com будут обновлены."
+
+#. Type: string
+#. Description
+#: ../templates:6001
+msgid "Network device name:"
+msgstr "Название сетевого устройства:"
+
+#. Type: string
+#. Description
+#: ../templates:6001
+msgid ""
+"Please specify the name of the network device connected to the Internet "
+"(typically ethX or pppX, where X is a number)."
+msgstr ""
+"Укажите название сетевого устройства, через которое осуществляется "
+"подключение к Интернет (обычно, ethX или pppX, где X это какая-то цифра)."
+
+#. Type: string
+#. Description
+#: ../templates:6001
+msgid ""
+"This field may be left empty if this host has a single network interface."
+msgstr ""
+"Это поле можно оставить пустым, если на машине только один сетевой интерфейс."
+
+#. Type: boolean
+#. Description
+#: ../templates:7001
+msgid "Disable Network Address Translation (NAT)?"
+msgstr "Выключить трансляцию сетевого адреса (NAT)?"
+
+#. Type: boolean
+#. Description
+#: ../templates:7001
+msgid ""
+"Please specify whether noip2 should not attempt to detect the external IP "
+"address of this computer."
+msgstr ""
+"Укажите, нужно ли, чтобы noip2 не пытался определить внешний IP-адрес этого "
+"компьютера."
+
+#. Type: boolean
+#. Description
+#: ../templates:7001
+msgid "If in doubt, you should leave the default choice."
+msgstr "Если ненужно, то оставьте выбор по умолчанию."

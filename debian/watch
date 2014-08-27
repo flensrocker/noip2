@@ -1,0 +1,4 @@
+# Upstream only displays version in download page,
+# "http://www.no-ip.com/downloads.php?page=linux".
+# Download link doesn't display version,
+# "http://www.no-ip.com/client/linux/noip-duc-linux.tar.gz".

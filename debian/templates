@@ -1,0 +1,50 @@
+# These templates have been reviewed by the debian-l10n-english
+# team
+#
+# If modifications/additions/rewording are needed, please ask
+# debian-l10n-english@lists.debian.org for advice.
+#
+# Even minor modifications require translation updates and such
+# changes should be coordinated with translators and reviewers.
+
+Template: noip2/username
+Type: string
+_Description: No-IP.com user name:
+ Please enter your No-IP.com account user name (usually your email address).
+
+Template: noip2/password
+Type: password
+_Description: No-IP.com password:
+ Please enter your No-IP.com account password.
+
+Template: noip2/updating
+Type: string
+Default: 30
+_Description: Update interval (in minutes):
+ Please enter the updating frequency (in minutes) the noip2 client
+ should use to refresh the record of your IP address.
+
+Template: noip2/matchlist
+Type: string
+_Description: List of hosts or groups:
+ Please specify a comma- or space-separated list of hosts or groups to update.
+ .
+ If you leave this field empty, all hosts and groups listed in your No-IP.com
+ account will be updated.
+
+Template: noip2/netdevice
+Type: string
+_Description: Network device name:
+ Please specify the name of the network device connected to the
+ Internet (typically ethX or pppX, where X is a number).
+ .
+ This field may be left empty if this host has a single network interface.
+
+Template: noip2/forcenatoff
+Type: boolean
+Default: false
+_Description: Disable Network Address Translation (NAT)?
+ Please specify whether noip2 should not attempt to detect the
+ external IP address of this computer.
+ .
+ If in doubt, you should leave the default choice.

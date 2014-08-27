@@ -1,0 +1,151 @@
+# Galician translation of no-ip's debconf templates
+# This file is distributed under the same license as the no-ip package.
+# Jacobo Tarrio <jtarrio@debian.org>, 2007.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: no-ip\n"
+"Report-Msgid-Bugs-To: Source: no-ip@packages.debian.org\n"
+"POT-Creation-Date: 2007-11-25 12:57+0000\n"
+"PO-Revision-Date: 2007-11-25 14:08+0000\n"
+"Last-Translator: Jacobo Tarrio <jtarrio@debian.org>\n"
+"Language-Team: Galician <proxecto@trasno.net>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#. Type: string
+#. Description
+#: ../templates:2001
+msgid "No-IP.com user name:"
+msgstr "Usuario de No-IP.com:"
+
+#. Type: string
+#. Description
+#: ../templates:2001
+msgid ""
+"Please enter your No-IP.com account user name (usually your email address)."
+msgstr ""
+"Introduza o nome de usuario da súa conta de No-IP.com (adoita ser o enderezo "
+"de email)."
+
+#. Type: password
+#. Description
+#: ../templates:3001
+msgid "No-IP.com password:"
+msgstr "Contrasinal de No-IP.com:"
+
+#. Type: password
+#. Description
+#: ../templates:3001
+msgid "Please enter your No-IP.com account password."
+msgstr "Introduza o contrasinal da súa conta de No-IP.com."
+
+#. Type: string
+#. Description
+#: ../templates:4001
+msgid "Update interval (in minutes):"
+msgstr "Intervalo entre actualizacións (en minutos):"
+
+#. Type: string
+#. Description
+#: ../templates:4001
+msgid ""
+"Please enter the updating frequency (in minutes) the noip2 client should use "
+"to refresh the record of your IP address."
+msgstr ""
+"Introduza a frecuencia de actualización (en minutos) que o cliente noip2 "
+"debe empregar para refrescar o rexistro do seu enderezo IP."
+
+#. Type: string
+#. Description
+#: ../templates:5001
+msgid "List of hosts or groups:"
+msgstr "Lista de máquinas ou grupos:"
+
+#. Type: string
+#. Description
+#: ../templates:5001
+msgid ""
+"Please specify a comma- or space-separated list of hosts or groups to update."
+msgstr ""
+"Especifique unha lista de máquinas ou grupos a actualizar, separados por "
+"comas ou espazos."
+
+#. Type: string
+#. Description
+#: ../templates:5001
+msgid ""
+"If you leave this field empty, all hosts and groups listed in your No-IP.com "
+"account will be updated."
+msgstr ""
+"Se deixa este campo baleiro, hanse actualizar tódalas máquinas e grupos da "
+"lista da súa conta de No-IP.com."
+
+#. Type: string
+#. Description
+#: ../templates:6001
+msgid "Network device name:"
+msgstr "Nome do dispositivo de rede:"
+
+#. Type: string
+#. Description
+#: ../templates:6001
+msgid ""
+"Please specify the name of the network device connected to the Internet "
+"(typically ethX or pppX, where X is a number)."
+msgstr ""
+"Especifique o nome da interface de rede que está conectada a Internet "
+"(adoita ser ethX ou pppX, onde X é un número)."
+
+#. Type: string
+#. Description
+#: ../templates:6001
+msgid ""
+"This field may be left empty if this host has a single network interface."
+msgstr ""
+"Pódese deixar este campo baleiro se esta máquina só ten unha interface de "
+"rede."
+
+#. Type: boolean
+#. Description
+#: ../templates:7001
+msgid "Disable Network Address Translation (NAT)?"
+msgstr "¿Desactivar a tradución de enderezos de rede (NAT)?"
+
+#. Type: boolean
+#. Description
+#: ../templates:7001
+msgid ""
+"Please specify whether noip2 should not attempt to detect the external IP "
+"address of this computer."
+msgstr ""
+"Especifique se noip2 non debería detectar o enderezo IP externo deste "
+"ordenador."
+
+#. Type: boolean
+#. Description
+#: ../templates:7001
+msgid "If in doubt, you should leave the default choice."
+msgstr "Se ten dúbidas, debería aceptar a opción por defecto."
+
+#~ msgid "noip2 package configuration"
+#~ msgstr "Configuración do paquete noip2"
+
+#~ msgid ""
+#~ "The noip2 package uses a configuration data file named /etc/noip2.conf. "
+#~ "Further questions are meant to fill in settings in that file."
+#~ msgstr ""
+#~ "O paquete noip2 emprega un ficheiro de datos de configuración chamado /"
+#~ "etc/noip2.conf. As seguintes preguntas serven para completar ese ficheiro."
+
+#~ msgid ""
+#~ "These settings must be updated whenever your account or password changes "
+#~ "or when you add or delete hosts and/or groups at www.no-ip.com.  This can "
+#~ "be done by reconfiguring this package by running 'dpkg-reconfigure noip2' "
+#~ "as root."
+#~ msgstr ""
+#~ "Esta configuración débese actualizar cada vez que cambie o seu nome de "
+#~ "usuario ou contrasinal, ou cando engada ou elimine máquinas e/ou grupos "
+#~ "en www.no-ip.com. Isto pódese facer reconfigurando este paquete "
+#~ "executando, coma administrador, \"dpkg-reconfigure noip2\"."

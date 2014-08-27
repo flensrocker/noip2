@@ -1,0 +1,38 @@
+#!/bin/sh
+## debconf config script for noip2
+##
+## This script runs before copying the files of the package to the correct
+## locations in the system.
+##
+## It gets the appropriate configuration values and stores them in the debconf
+## database. If necessary it asks the user about some needed information.
+##
+## This file is human readable by using "grep '#' <thisfile>"
+#
+
+set -e
+
+. /usr/share/debconf/confmodule
+db_version 2.0 || { echo "noip2.config: \
+  need DebConf 2.0 or later"; exit 1; }
+
+#----------------------------------------------------------------------------
+# create_new_config() - create a new config from scratch
+#----------------------------------------------------------------------------
+create_new_config()
+{
+  # Ask the user about the no-ip.com account username, password, updating frequency, etc.
+  db_input critical noip2/username || true
+  db_input critical noip2/password || true
+  db_input critical noip2/updating || true
+  db_input critical noip2/matchlist || true
+  db_input critical noip2/netdevice || true
+  db_input critical noip2/forcenatoff || true
+  db_go
+}
+
+case "$1" in
+	configure|reconfigure)
+		create_new_config
+		;;
+esac

@@ -1,0 +1,74 @@
+#!/usr/bin/make -f
+
+patch: patch-stamp
+patch-stamp:
+	dh_testdir
+	QUILT_PATCHES=debian/patches quilt push -a || test $$? = 2
+	touch patch-stamp
+
+build: patch build-stamp
+build-stamp:
+	dh_testdir
+	$(MAKE)
+	touch build-stamp
+
+clean: clean-stamp unpatch
+clean-stamp:
+	dh_testdir
+	dh_testroot
+	$(MAKE) clean
+	rm -f build-stamp
+	dh_clean
+
+unpatch:
+	dh_testdir
+	QUILT_PATCHES=debian/patches quilt pop -a -R || test $$? = 2
+	rm -rf .pc/ patch-stamp
+
+install: build
+	dh_testdir
+	dh_testroot
+	dh_clean -k
+
+#Nothing to do for binary-indep
+binary-indep:
+
+# Build architecture-dependent files here.
+binary-arch: build install
+	dh_testdir
+	dh_testroot
+	dh_install noip2 usr/bin
+	dh_installlogcheck
+	dh_installdirs var/lib/noip2
+ifeq (,$(findstring nostrip,$(DEB_BUILD_OPTIONS)))
+	dh_strip
+endif
+	dh_installinit
+	dh_installppp
+	dh_installdebconf
+	dh_installdocs
+	dh_installman debian/*.8
+	dh_installchangelogs
+	dh_compress
+	dh_fixperms
+	dh_installdeb
+	dh_shlibdeps
+	dh_gencontrol
+	dh_md5sums
+	dh_builddeb
+
+status-po:
+	@echo Status of translations
+	@echo ~~~~~~~~~~~~~~~~~~~~~~
+	@for p in debian/po/*.po; do \
+	    echo $$p: ; \
+	    msgfmt --statistics $$p; \
+	    echo ; \
+	done
+
+binary: binary-arch
+
+get-orig-source:
+	$(dir $_)no-ip-get-orig-source --remove-upstream-tarball
+
+.PHONY: configure build clean binary-indep binary-arch binary install

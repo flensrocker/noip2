@@ -1,0 +1,132 @@
+# translation of no-ip debconf to Portuguese
+# Copyright (C) 2007, Américo Monteiro
+# This file is distributed under the same license as the no-ip package.
+#
+# Américo Monteiro <a_monteiro@netcabo.pt>, 2007.
+msgid ""
+msgstr ""
+"Project-Id-Version: no-ip 2.1.7-4\n"
+"Report-Msgid-Bugs-To: Source: no-ip@packages.debian.org\n"
+"POT-Creation-Date: 2007-11-25 12:57+0000\n"
+"PO-Revision-Date: 2007-11-25 13:46+0000\n"
+"Last-Translator: Américo Monteiro <a_monteiro@netcabo.pt>\n"
+"Language-Team: Portuguese <traduz@debianpt.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: KBabel 1.11.4\n"
+
+#. Type: string
+#. Description
+#: ../templates:2001
+msgid "No-IP.com user name:"
+msgstr "Nome do utilizador No-IP.com:"
+
+#. Type: string
+#. Description
+#: ../templates:2001
+msgid ""
+"Please enter your No-IP.com account user name (usually your email address)."
+msgstr ""
+"Por favor indique o nome de utilizador da sua conta No-IP.com (normalmente é "
+"o seu endereço de email)."
+
+#. Type: password
+#. Description
+#: ../templates:3001
+msgid "No-IP.com password:"
+msgstr "Password No-IP.com:"
+
+#. Type: password
+#. Description
+#: ../templates:3001
+msgid "Please enter your No-IP.com account password."
+msgstr "Por favor indique a password da sua conta No-IP.com."
+
+#. Type: string
+#. Description
+#: ../templates:4001
+msgid "Update interval (in minutes):"
+msgstr "Intervalo de actualização (em minutos):"
+
+#. Type: string
+#. Description
+#: ../templates:4001
+msgid ""
+"Please enter the updating frequency (in minutes) the noip2 client should use "
+"to refresh the record of your IP address."
+msgstr ""
+"Por favor indique a frequência de actualização (em minutos) que o cliente "
+"noip2 deverá usar para refrescar a gravação do seu endereço IP."
+
+#. Type: string
+#. Description
+#: ../templates:5001
+msgid "List of hosts or groups:"
+msgstr "Lista de Máquinas ou Grupos:"
+
+#. Type: string
+#. Description
+#: ../templates:5001
+msgid ""
+"Please specify a comma- or space-separated list of hosts or groups to update."
+msgstr ""
+"Por favor especifique uma lista de máquinas ou grupos a serem actualizados "
+"(separada por espaços ou vírgulas)."
+
+#. Type: string
+#. Description
+#: ../templates:5001
+msgid ""
+"If you leave this field empty, all hosts and groups listed in your No-IP.com "
+"account will be updated."
+msgstr ""
+"Se deixar este campo vazio, todas as máquinas e grupos listados na sua conta "
+"No-IP.com serão actualizados."
+
+#. Type: string
+#. Description
+#: ../templates:6001
+msgid "Network device name:"
+msgstr "Nome do dispositivo de rede:"
+
+#. Type: string
+#. Description
+#: ../templates:6001
+msgid ""
+"Please specify the name of the network device connected to the Internet "
+"(typically ethX or pppX, where X is a number)."
+msgstr ""
+"Por favor indique o nome do dispositivo de rede ligado à Internet "
+"(tipicamente ethX ou pppX, onde X é um número)."
+
+#. Type: string
+#. Description
+#: ../templates:6001
+msgid ""
+"This field may be left empty if this host has a single network interface."
+msgstr ""
+"Este campo pode ser deixado vazio se esta máquina tiver apenas uma interface "
+"de rede."
+
+#. Type: boolean
+#. Description
+#: ../templates:7001
+msgid "Disable Network Address Translation (NAT)?"
+msgstr "Desactivar Network Address Translation (NAT)?"
+
+#. Type: boolean
+#. Description
+#: ../templates:7001
+msgid ""
+"Please specify whether noip2 should not attempt to detect the external IP "
+"address of this computer."
+msgstr ""
+"Por favor especifique se o noip2 não deverá tentar detectar o endereço IP "
+"externo deste computador."
+
+#. Type: boolean
+#. Description
+#: ../templates:7001
+msgid "If in doubt, you should leave the default choice."
+msgstr "Em caso de dúvidas, você deverá deixar a opção pré-definida."

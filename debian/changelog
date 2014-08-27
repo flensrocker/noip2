@@ -1,0 +1,272 @@
+no-ip (2.1.9-3) unstable; urgency=low
+
+  * Use dh_installppp (not dh_installifupdown) for ip-up script.
+  * Change debhelper Build-Depends back to (>= 5).
+
+ -- Andres Mejia <mcitadel@gmail.com>  Tue, 14 Apr 2009 18:14:19 -0400
+
+no-ip (2.1.9-2) unstable; urgency=low
+
+  * Handle non-writable conf (thanks Martin F. Kraft). (Closes: #524020)
+  * Also add a Conflicts field for no-ip. (Closes: #524053)
+  * Add Swedish debconf translations. (Closes: #510806)
+  * Add Japanese debconf translations. (Closes: #510727)
+  * Update logcheck rules for new package.
+  * Add new logcheck rule. (Closes: #408080)
+  * Model the init script more like /etc/init.d/skeleton.
+  * Make use of a default configuration file for the init script.
+  * Add an ip-up script. (Closes: #310476)
+  * Bump to Standards-Version 3.8.1.
+  * Address some lintian issues.
+  * Refreshed all patches.
+
+ -- Andres Mejia <mcitadel@gmail.com>  Tue, 14 Apr 2009 17:40:34 -0400
+
+no-ip (2.1.9-1) unstable; urgency=high
+
+  [ Avi Rozen ]
+  * New upstream release.  (Closes: #506387)
+  * Removed patch getvisibleip-buffer-overflow.diff (fixed upstream)
+  * Removed patch getnextline-buffer-overflow.diff (fixed upstream)
+  * Removed patch autoconf-buffer-overflow.diff (fixed upstream)
+  * Modified makefile_modifications.diff to support noopt build
+  * Regenerated other patches
+  * Updated debian/docs
+  * Bumped Standards-Version to 3.8.0 (no changes needed)
+  * Fixed lintian warning: command-with-path-in-maintainer-script
+  * Applied patch to fix potential symlink attack (CVE-2008-5369).
+    Thanks Nico Golde <nion@debian.org>. (Closes: #509348) 
+
+  [ Andres Mejia ]
+  * Added script to regenerate orig source tarball.
+  * Fixed lintian warnings:
+    debian-watch-file-is-missing
+    hyphen-used-as-minus-sign
+    patch-system-but-direct-changes-in-diff
+  * Addressed some lintian info tag: quilt-patch-missing-description.
+
+ -- Andres Mejia <mcitadel@gmail.com>  Sun, 21 Dec 2008 14:06:29 -0500
+
+no-ip (2.1.7-11) unstable; urgency=high
+
+  [ Avi Rozen ]
+  * Fixed grave bug: remote code execution vulnerability. (Closes: #506179)
+
+ -- Andres Mejia <mcitadel@gmail.com>  Thu, 20 Nov 2008 19:25:31 -0500
+
+no-ip (2.1.7-10) unstable; urgency=low
+
+  [ Avi Rozen ]
+  * bug fix (grave): does not start on fresh install
+
+ -- Otavio Salvador <otavio@debian.org>  Mon, 28 Jul 2008 23:49:05 -0300
+
+no-ip (2.1.7-9) unstable; urgency=low
+
+  [ Andres Mejia ]
+  * Remove use of --error-handler for dh_installinit.
+
+ -- Andres Mejia <mcitadel@gmail.com>  Wed, 21 May 2008 03:32:59 -0400
+
+no-ip (2.1.7-8) unstable; urgency=low
+
+  [ Andres Mejia ]
+  * Fix where logcheck filter is installed. Closes: #478848
+  * Add DM-Upload-Allowed: yes field in control file.
+  * Fixing postinst to allow usernames and passwords with spaces.
+    Closes: #480543
+  * Added nostrip option for DEB_BUILD_OPTIONS.
+  * Fix manpage lintian warning.
+
+ -- Andres Mejia <mcitadel@gmail.com>  Mon, 19 May 2008 23:00:49 -0400
+
+no-ip (2.1.7-7) unstable; urgency=low
+
+  * Ran debconf-updatepo
+  * Add status-po rules target to be easier to identify the missing
+    translations
+  * Update Brazilian Portuguese translation. Closes: #458756
+
+ -- Otavio Salvador <otavio@debian.org>  Wed, 02 Jan 2008 15:10:51 -0200
+
+no-ip (2.1.7-6) unstable; urgency=low
+
+  [ Otavio Salvador ]
+  * Update Spanish translation. Closes: #457910
+  * Update Vietnamese translation. Closes: #457315
+
+ -- Otavio Salvador <otavio@debian.org>  Sun, 30 Dec 2007 19:22:09 -0200
+
+no-ip (2.1.7-5) unstable; urgency=low
+
+  [ Avi Rozen ]
+  * fix FTBFS (reversed all patches)
+
+  [ Otavio Salvador ]
+  * Bump standards-version (no changes was need)
+  * Updated po files (runned debconf-updatepo)
+  * Applied general update of debconf review process
+
+  [ Christian Perrier ]
+  * Debconf templates and debian/control reviewed by the debian-l10n-
+    english team as part of the Smith review project. Closes: #452169
+  * [Debconf translation updates]
+  * Galician. Closes: #452825
+  * Portuguese. Closes: #452853
+  * Basque. Closes: #452941
+  * Finnish. Closes: #453152
+  * Italian. Closes: #453338
+  * French. Closes: #453451
+  * Norwegian Bokmål; Bokmål, Norwegian. Closes: #453855
+    55
+  * German. Closes: #454508
+  * Russian. Closes: #455204
+  * Dutch; Flemish. Closes: #455243
+  * Czech. Closes: #455233
+  * Spanish; Castilian. Closes: #455812
+
+ -- Otavio Salvador <otavio@debian.org>  Sat, 15 Dec 2007 09:18:57 -0200
+
+no-ip (2.1.7-4) unstable; urgency=low
+
+  [ Andres Mejia ]
+  * Changing noip2.conf path from /etc to /var/lib/noip2. Closes: #430842
+  * Including updated Portuguese translations. Closes: #449114
+  * Including updated Finnish translations. Closes: #449171
+  * Taking out 'XS-' for Vcs entries in debian/control, no longer needed.
+  * Translation review process.
+    + Applying patch sent by debian-l10n-english contributors.
+  * Closes: #314616
+    + Could not reproduce problem. Possibly fixed in previous version of glibc
+      or noip2.
+  * Including updated Galician translations. Closes: #452825
+  * Including updated Portuguese translations. Closes: #452853
+
+ -- Otavio Salvador <otavio@debian.org>  Thu, 13 Dec 2007 13:59:38 -0200
+
+no-ip (2.1.7-3) unstable; urgency=low
+
+  [ Avi Rozen ]
+  * Fixed: segfault when config file isn't readable.
+  * Fixed: temporary files generated in /etc (moved to /tmp).
+  * Fixed: was interactive in auto-mode.
+  * Added -L option to specify hosts/groups to update.
+  * Added description to man page. Closes: #441182
+  * Debconf support for fixed auto-mode. Closes: #443149
+  * Misc. fixes: 'upgrade' in postrm, space in init.
+  * Removed special treatment of single quote in password (problem is at
+    No-IP.com).
+  * Removed introduction note Debconf template. Closes: #441279
+  * fixed input problem in case of partial config
+
+  [ Otavio Salvador ]
+  * Added Brazilian Portuguese Translation. Closes: #446716
+  * Added Vietnamese Translation. Closes: #445124
+  * Applied patches sent by SMITH Review Project
+
+ -- Otavio Salvador <otavio@debian.org>  Wed, 31 Oct 2007 09:46:17 -0200
+
+no-ip (2.1.7-2) unstable; urgency=low
+
+  * Applied reviewed Debconf template. Closes: #444105
+  * fix maintainer/uploader fields. Closes: #442128
+  * Added Portuguese Debconf Translation. Closes: #441335
+  * Added Russian Debconf Translation. Closes: #444662
+  * Updated Portuguese Debconf Translation. Closes: #444681
+  * Added Glacian Debconf Translation. Closes: #444756
+  * Added Czech Debconf Translation. Closes: #445037
+  * Added French Debconf Translation. Closes: #445300
+  * Added Italian Debconf Translation. Closes: #445520
+  * Added Finnish Debconf Translation. Closes: #445809
+  * Added German Debconf Translation. Closes: #446129
+
+ -- Otavio Salvador <otavio@debian.org>  Fri, 12 Oct 2007 16:22:33 -0300
+
+no-ip (2.1.7-1) unstable; urgency=low
+
+  * New Upstream Version (Closes: 437897).
+
+  [ Andres Mejia ]
+  * Adding XS-Vcs-{Git,Browser} fields on control file.
+    + First no-ip release on collaborative maintainence, feel free to improve
+      improve this package!
+  * Removing NAME variable from init script again.
+  * New release of noip-2.1.6 packaged.
+  * Closing bug 437897 (Closes: 437897)
+    + Didn't realize that a package for no-ip existed (was looking for noip or
+      noip2 which reflected upstream source name or binary name.
+    + This will also mean the whole package was remade from scratch.
+  * Build depends on debhelper (>= 5), po-debconf, and quilt now.
+  * Patch is modified to use /etc/noip2.conf to reflect package name.
+  * Using debconf for configuration (Closes: 328842)
+    + Added ${misc:Depends} for debconf.
+    + Added po-debconf support.
+  * Added postrm script to remove configuration data file when removing
+    package.
+  * Will use logcheck.ignore.
+  * Will adapt init script used upstream for distribution with Debian.
+    + Script that is used will be under debian/noip2.init.
+  * Renamed binary package from no-ip to noip2 to reflect binary that is made.
+    + Added a Provides: no-ip line for less confusion.
+  * Using description from previous releases in debian/control.
+  * Changed compat from 4 to 5.
+
+ -- Otavio Salvador <otavio@ossystems.com.br>  Sat, 01 Sep 2007 15:16:31 -0300
+
+no-ip (2.1.3-3) unstable; urgency=low
+
+  * debian/patches/fix_conffile.dpatch: update. Fix the path to load the
+    conffile. Closes: #407374;
+
+ -- Otavio Salvador <otavio@debian.org>  Fri, 19 Jan 2007 11:16:04 -0200
+
+no-ip (2.1.3-2) unstable; urgency=low
+
+  * debian/rules: add dpatch support.
+  * debian/control: add dpatch on build-depends.
+  * debian/patches/fix_conffile.dpatch: added. Closes: #407075.
+  * debian/init.d: remove unused variable. Closes: #407077.
+
+ -- Otavio Salvador <otavio@debian.org>  Tue, 16 Jan 2007 08:22:49 -0200
+
+no-ip (2.1.3-1) unstable; urgency=low
+
+  * New upstream release. Closes: #406764.
+  * debian/rules: convert to cdbs:
+    - Fix missing build-indep target. Closes: #395720;
+  * debian/install: new file to install logcheck rule.
+  * debian/manpages: new file to install the manpage.
+  * debian/control:
+    - change the Standards-Version field to 3.7.2;
+    - add cdbs as build-dependency;
+    - change debhelper build-dependency to >> 5;
+  * debian/copyright: update FSF address.
+
+ -- Otavio Salvador <otavio@debian.org>  Mon, 15 Jan 2007 12:21:19 -0200
+
+no-ip (2.1.1-4) unstable; urgency=low
+
+  * Added logcheck ignore files.
+
+ -- Otavio Salvador <otavio@debian.org>  Thu, 22 Jul 2004 09:39:11 -0300
+
+no-ip (2.1.1-3) unstable; urgency=low
+
+  * Fix the typos on README.Debian, thanks to Guilherme de S. Pastore
+    (Closes: #254250).
+
+ -- Otavio Salvador <otavio@debian.org>  Mon, 14 Jun 2004 14:20:42 -0300
+
+no-ip (2.1.1-2) unstable; urgency=low
+
+  * Update the packaging, now conforming to policy version 3.6.1:
+    - debian/control: change the Standards-Version field to 3.6.1.
+  * debian/init.d: no-ip now can be stop and restarted (Closes: #247402).
+
+ -- Otavio Salvador <otavio@debian.org>  Tue,  4 May 2004 20:15:31 -0300
+
+no-ip (2.1.1-1) unstable; urgency=low
+
+  * Initial Release.
+
+ -- Otavio Salvador <otavio@debian.org>  Thu, 22 Apr 2004 14:48:44 -0300

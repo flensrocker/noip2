@@ -1,0 +1,13 @@
+# Defaults for noip2 ip-up script
+# installed at /etc/default/noip2 by the maintainer scripts
+
+#
+# This is a POSIX shell fragment
+#
+
+# Set whether the initscript should be run. Set this value to anything but 'yes'
+# to disable the daemon
+RUN_INIT="yes"
+
+# Set this to anything but "no" to activate ip-up script
+RUN_IPUP="no"

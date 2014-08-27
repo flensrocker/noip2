@@ -1,0 +1,126 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: Source: no-ip@packages.debian.org\n"
+"POT-Creation-Date: 2007-11-25 12:57+0000\n"
+"PO-Revision-Date: 2007-11-27 19:45+0200\n"
+"Last-Translator: Esko Arajärvi <edu@iki.fi>\n"
+"Language-Team: Finnish <debian-l10n-finnish@lists.debian.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-Language: Finnish\n"
+"X-Poedit-Country: FINLAND\n"
+
+#. Type: string
+#. Description
+#: ../templates:2001
+msgid "No-IP.com user name:"
+msgstr "No-IP.com-käyttäjätunnus:"
+
+#. Type: string
+#. Description
+#: ../templates:2001
+msgid ""
+"Please enter your No-IP.com account user name (usually your email address)."
+msgstr "Anna No-IP.com-tilisi käyttäjätunnus (yleensä sähköpostiosoitteesi)."
+
+#. Type: password
+#. Description
+#: ../templates:3001
+msgid "No-IP.com password:"
+msgstr "No-IP.com-salasana:"
+
+#. Type: password
+#. Description
+#: ../templates:3001
+msgid "Please enter your No-IP.com account password."
+msgstr "Anna No-IP.com-tunnuksesi salasana."
+
+#. Type: string
+#. Description
+#: ../templates:4001
+msgid "Update interval (in minutes):"
+msgstr "Päivitysväli (minuutteja):"
+
+#. Type: string
+#. Description
+#: ../templates:4001
+msgid ""
+"Please enter the updating frequency (in minutes) the noip2 client should use "
+"to refresh the record of your IP address."
+msgstr ""
+"Anna aikaväli (minuutteina) kuinka usein noip2-asiakkaan tulisi päivittää IP-"
+"osoitteesi palvelimelle."
+
+#. Type: string
+#. Description
+#: ../templates:5001
+msgid "List of hosts or groups:"
+msgstr "Lista koneista tai ryhmistä:"
+
+#. Type: string
+#. Description
+#: ../templates:5001
+msgid ""
+"Please specify a comma- or space-separated list of hosts or groups to update."
+msgstr ""
+"Anna välilyönnein tai pilkuin eroteltu lista päivitettävistä koneista tai "
+"ryhmistä."
+
+#. Type: string
+#. Description
+#: ../templates:5001
+msgid ""
+"If you leave this field empty, all hosts and groups listed in your No-IP.com "
+"account will be updated."
+msgstr ""
+"Jos kenttä jätetään tyhjäksi, kaikki No-IP.com-tunnuksen koneet ja ryhmät "
+"päivitetään."
+
+#. Type: string
+#. Description
+#: ../templates:6001
+msgid "Network device name:"
+msgstr "Verkkolaitteen nimi:"
+
+#. Type: string
+#. Description
+#: ../templates:6001
+msgid ""
+"Please specify the name of the network device connected to the Internet "
+"(typically ethX or pppX, where X is a number)."
+msgstr ""
+"Anna Internetiin yhdistetyn verkkolaitteen nimi (tyypillisesti ethX tai "
+"pppX, jossa X on numero)."
+
+#. Type: string
+#. Description
+#: ../templates:6001
+msgid ""
+"This field may be left empty if this host has a single network interface."
+msgstr ""
+"Tämä kenttä voidaan jättää tyhjäksi, jos tällä koneella on vain yksi "
+"verkkoliitäntä."
+
+#. Type: boolean
+#. Description
+#: ../templates:7001
+msgid "Disable Network Address Translation (NAT)?"
+msgstr "Passivoidaanko verkko-osoitteiden muunto (NAT)?"
+
+#. Type: boolean
+#. Description
+#: ../templates:7001
+msgid ""
+"Please specify whether noip2 should not attempt to detect the external IP "
+"address of this computer."
+msgstr ""
+"Määritä tulisiko noip2:n olla yrittämättä tunnistaa koneen ulkoinen IP-"
+"osoite."
+
+#. Type: boolean
+#. Description
+#: ../templates:7001
+msgid "If in doubt, you should leave the default choice."
+msgstr "Jos olet epävarma, jätä oletusvalinta."

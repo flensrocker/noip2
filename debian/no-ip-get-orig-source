@@ -1,0 +1,76 @@
+#!/bin/sh
+
+# This script is used to download the upstream source for no-ip and
+# generate it into an orig source tarball for Debian.
+
+# Common variables used to ease maintenance of this script
+NOIP_TARBALL="noip-duc-linux.tar.gz"
+NOIP_VERSION="2.1.9"
+NOIP_TARBALL_CHECKSUM="3b0f5f2ff8637c73ab337be403252a60"
+
+USAGE="\n\
+This script is used to generate the orig tarball used in building\n\
+Debian packages for no-ip-$NOIP_VERSION.\n\
+Usage: no-ip-get-orig-source [OPTION]\n\
+\n\
+ -h, --help                 Display this help message.\n\
+ --remove-upstream-tarball    Remove the upstream source tarball.\n"
+
+while [ "$#" -gt "0" ]
+do
+    case "$1" in
+        -h|--help)
+            echo "${USAGE}"
+            exit 1
+            ;;
+        --remove-upstream-tarball)
+            REMOVE_UPSTREAM_TARBALL=1
+            shift
+            ;;
+    esac
+done
+
+# Download the tarball if it's not available in the current directory
+[ -f $NOIP_TARBALL ] || \
+    wget "http://www.no-ip.com/client/linux/$NOIP_TARBALL"
+
+# Verify the checksum
+COMPUTED_CHECKSUM=`md5sum $NOIP_TARBALL | cut -d ' ' -f 1`
+if [ $NOIP_TARBALL_CHECKSUM != $COMPUTED_CHECKSUM ] ; then
+    echo "Checksum verification failed. Checksum was $COMPUTED_CHECKSUM
+Expected checksum $NOIP_TARBALL_CHECKSUM."
+    exit 1
+else
+    echo "Checksum verified. Checksum is $COMPUTED_CHECKSUM."
+fi
+
+# Extract upstream tarball
+echo -n "Extracting tarball to no-ip-$NOIP_VERSION.orig..."
+tar -xzf $NOIP_TARBALL
+mv noip-$NOIP_VERSION-1 no-ip-$NOIP_VERSION.orig
+echo -n "done."
+
+# Remove unnecessary binary files
+echo -n "Removing unnecessary files..."
+for HIDDEN in $(find no-ip-$NOIP_VERSION.orig -regex '.*._.*'); do
+    rm $HIDDEN
+done
+rm no-ip-$NOIP_VERSION.orig/README.FIRST.JAPANESE
+rm ._noip-2.1.9-1 # This one is extracted in the current directory
+echo "done."
+
+# Generate new upstream source tarball
+echo -n "Creating new tarball no-ip_$NOIP_VERSION.orig.tar.gz..."
+tar -czf no-ip_$NOIP_VERSION.orig.tar.gz no-ip-$NOIP_VERSION.orig/
+echo "done."
+
+# Remove extracted directory
+rm -rf no-ip-$NOIP_VERSION.orig
+
+# Removed upstream source tarball if requested.
+if [ $REMOVE_UPSTREAM_TARBALL ]; then
+    echo -n "Removing upstream tarball..."
+    rm $NOIP_TARBALL
+    echo "done."
+fi
+

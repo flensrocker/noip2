@@ -1,0 +1,22 @@
+Change path of configuration file.
+NOTE: This is intentional, see Debian Bug #430842.
+==========================================================================
+--- a/noip2.c
++++ b/noip2.c
+@@ -239,11 +239,14 @@
+ #define HOST			1
+ #define GROUP			2
+ #define DOMAIN			3
++/* PREFIX won't be used here
+ #ifndef PREFIX
+   #define PREFIX		"/usr/local"
+ #endif
+-#define CONFIG_FILEPATH		PREFIX"/etc"
+-#define CONFIG_FILENAME		PREFIX"/etc/no-ip2.conf"
++*/
++#define CONFIG_FILEPATH		"/var/lib/noip2"
++// Renaming from no-ip2.conf to noip2.conf to reflect package name.
++#define CONFIG_FILENAME		"/var/lib/noip2/noip2.conf"
+ #define CONFSTRLEN		1024
+ #define MAX_DEVLEN		16
+ #define MAX_INSTANCE		4

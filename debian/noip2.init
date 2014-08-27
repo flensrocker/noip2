@@ -1,0 +1,93 @@
+#! /bin/sh
+
+### BEGIN INIT INFO
+# Provides:          noip2
+# Required-Start:    $network
+# Required-Stop:     $network
+# Default-Start:     2 3 4 5
+# Default-Stop:      0 1 6
+# Short-Description: No-IP.com dynamic address update service
+# Description:       Manage the No-IP.com Dynamic DNS update client
+### END INIT INFO
+
+NAME=noip2
+DAEMON=/usr/bin/$NAME
+DESCRIPTION="No-IP.com dynamic address update"
+DEFAULT=/etc/default/$NAME
+CONFFILE=/var/lib/$NAME/$NAME.conf
+DAEMONOPTS=
+
+# Exit if the package is not installed
+test -x $DAEMON || exit 0
+
+# Read configuration variable file if it is present
+[ -r $DEFAULT ] && . $DEFAULT
+
+# Load the VERBOSE setting and other rcS variables
+[ -f /etc/default/rcS ] && . /etc/default/rcS
+
+# Define LSB log_* functions.
+# Depend on lsb-base (>= 3.0-6) to ensure that this file is present.
+. /lib/lsb/init-functions
+
+# Start the daemon if RUN_INIT is enabled in DEFAULT
+if [ "$RUN_INIT" != "yes" ] && [ "$1" != "stop" ]; then
+        log_warning_msg "$NAME: Not starting $DESCRIPTION."
+        log_warning_msg "$NAME: Disabled in $DEFAULT."
+        exit 0
+fi
+
+daemonopts() {
+    if [ ! -w $CONFFILE ]; then
+        log_action_begin_msg "Creating a read-write copy of the $NAME configuration"
+        NEWCONFFILE=/dev/shm/noip2-readwrite.conf
+        cp $CONFFILE $NEWCONFFILE && CONFFILE=$NEWCONFFILE
+        ret=$?
+        DAEMONOPTS="${DAEMONOPTS:+$DAEMONOPTS }-c $CONFFILE"
+        log_action_end_msg $ret $CONFFILE
+    fi
+}
+
+do_strace () {
+    TMPFILE="$(mktemp -t noip2-strace.XXXXXXXX)"
+    daemonopts
+    log_daemon_msg "Starting $DESCRIPTION" "$NAME (strace)"
+    start-stop-daemon --quiet --oknodo --start --exec $DAEMON \
+        --background --startas /usr/bin/strace -- -s 65536 -T -f -o $TMPFILE $DAEMON $DAEMONOPTS
+    log_end_msg $?
+    return $?
+}
+
+do_start () {
+    daemonopts
+    log_daemon_msg "Starting $DESCRIPTION" "$NAME"
+    start-stop-daemon --quiet --start --exec $DAEMON -- $DAEMONOPTS
+    log_end_msg $?
+    return $?
+} 
+
+do_stop () {
+    log_daemon_msg "Stopping $DESCRIPTION" "$NAME"
+    start-stop-daemon --quiet --stop --oknodo --retry 30 --exec $DAEMON
+    log_end_msg $?
+    return $?
+}
+
+case "$1" in
+    start)
+    do_start
+    ;;
+    stop)
+    do_stop
+    ;;
+    restart|force-reload)
+    do_stop 
+    do_start
+    ;;
+
+    *)
+    log_success_msg "Usage: $0 {start|stop|restart|force-reload}"
+    exit 1
+esac
+
+exit 0

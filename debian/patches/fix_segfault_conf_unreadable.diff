@@ -1,0 +1,15 @@
+Fix segfault when configuration file is unreadable.
+==========================================================================
+--- a/noip2.c
++++ b/noip2.c
+@@ -1271,6 +1271,10 @@
+ 	struct	CONFIG *cfg;
+ 
+         fd = open(name, O_RDONLY);
++	if (fd < 0) {
++	    perror("get_one_config");
++	    exit(1);
++	}
+         size = sizeof(struct CONFIG);
+         cfg = (struct CONFIG *)Malloc(size);
+         read(fd, cfg, size);

@@ -1,0 +1,6 @@
+fix_symlink_attack.diff
+makefile_modifications.diff
+conffile_path_lookup.diff
+fix_segfault_conf_unreadable.diff
+auto_mode.diff
+hosts_groups_match_option.diff
